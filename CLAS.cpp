@@ -3,14 +3,14 @@
 using namespace std;
 
 int main()
-{
+{setlocale(LC_ALL, "Russian");
 float num1, num2, num3;
 float sum;
-
+Price my;
 // First Formula
 
 cout<<"Сколько яблок вы хотели бы приобрести (.65 cents/each): ";
-cin >> num1;
+cin >> my.num1;
 
 cout<<"Сколько бы Вы апельсинов лик приобрести (.90 cents/each): ";
 cin >> num2;
