@@ -1,0 +1,62 @@
+#include "stdafx.h"
+#include <iostream> 
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+  setlocale( LC_ALL,"Russian" );
+   const int PEOPLE = 5;
+   const int PRODUCTS = 6;
+   double sales[ PEOPLE ][ PRODUCTS ] = { 0.0 };
+   double value;
+   double totalSales;
+   double productSales[ PRODUCTS ] = { 0.0 };
+   int salesPerson;
+   int product;
+   
+   
+   cout << "Введите продавцу (1 - 4), номер изделия (1 - 5), а"
+      << "общего объема продаж. \ nВведите -1 для продавца в конец ввода. \ N";
+   cin >> salesPerson;
+   
+   
+   while ( salesPerson != -1 ) 
+   {
+      cin >> product >> value;
+      sales[ salesPerson ][ product ] += value;
+      cin >> salesPerson;
+   } 
+
+   cout << "\ nВ общем объеме продаж для каждого продавца отображаются в"
+      << "конце каждой строки, \ п" << "и общий объем продаж по каждому продукту"
+      << "отображаются в нижней части каждого столбца. \ п" << setw( 12 ) 
+      << 1 << setw( 12 ) << 2 << setw( 12 ) << 3 << setw( 12 ) << 4 
+      << setw( 12 ) << 5 << setw( 13 ) << "Всего \ N" << fixed << showpoint;
+
+   
+   ;for ( int i = 1; i < PEOPLE; i++ ) 
+   {
+      totalSales = 0.0;
+      cout << i;
+      
+      
+      for ( int j = 1; j < PRODUCTS; j++ ) 
+      {
+         totalSales += sales[ i ][ j ];
+         cout << setw( 12 ) << setprecision( 2 ) << sales[ i ][ j ];
+         productSales[ j ] += sales[ i ][ j ];
+      } 
+
+      cout << setw( 12 ) << setprecision( 2 ) << totalSales << '\n';
+   } 
+   
+   cout << "\nTotal" << setw( 8 ) << setprecision( 2 ) 
+      << productSales[ 1 ];
+
+   
+   ;for ( int j = 2; j < PRODUCTS; j++ )
+      cout << setw( 12 ) << setprecision( 2 ) << productSales[ j ];
+
+   cout << endl;
+} 
